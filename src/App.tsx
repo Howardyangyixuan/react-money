@@ -10,21 +10,19 @@ import {
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-border: 2px solid red;
 height: 100vh;
 display: flex;
 flex-direction: column;
 `;
 
 const Main = styled.div`
-border: 1px solid green;
 flex-grow: 1;
 //自己的区域加滚动条
 overflow: auto;
 `;
 
 const Nav = styled.nav`
-  border: 1px solid blue;
+  box-shadow: 0 0 3px rgb(0,0,0,0.25);
   > ul{
     display: flex;
     > li{
