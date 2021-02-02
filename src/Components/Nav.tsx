@@ -27,15 +27,15 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-          <Icon name="tag" fill="red"/>
+          <Icon name="tag"/>
           <Link to="/tags"> 标签页</Link>
         </li>
         <li>
-          <Icon name="money" fill="blue"/>
+          <Icon name="money"/>
           <Link to="/money">记账页</Link>
         </li>
         <li>
-          <Icon name="statistics" fill="green"/>
+          <Icon name="statistics"/>
           <Link to="/statistics">统计页</Link>
         </li>
       </ul>

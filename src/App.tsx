@@ -6,9 +6,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import styled from 'styled-components';
-import Nav from './Components/Nav';
-import Layout from './Components/Layout';
+import Money from './views/Money';
+import Statistics from './views/Statistics';
+import Tags from './views/Tag';
+import NoMatch from './views/NoMatch';
 
 
 function App() {
@@ -33,32 +34,8 @@ function App() {
   );
 }
 
-function Statistics() {
-  return (
-    <Layout>
-      <h2>Statistics</h2>
-    </Layout>
-  );
-}
 
-function Tags() {
-  return (
-    <Layout>
-      <h2>Tags</h2>
-    </Layout>
-  );
-}
 
-function Money() {
-  return (
-    <Layout>
-      <h2>Money</h2>
-    </Layout>
-  );
-}
 
-function NoMatch() {
-  return <h2>404</h2>;
-}
 
 export default App;

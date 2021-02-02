@@ -6,12 +6,12 @@ try {importAll(require.context('../icons', true, /\.svg$/));} catch (error) {con
 
 type Props = {
   name: string
-  fill: string
+  fill?: string
 }
 
 function Icon(props: Props) {
   return (
-    <svg className='icon' fill={props.fill}>
+    <svg className='icon' fill={props.fill?props.fill:""}>
       <use xlinkHref={'#' + props.name}/>
     </svg>
   );
