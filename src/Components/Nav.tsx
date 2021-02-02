@@ -2,9 +2,7 @@ import {Link} from 'react-router-dom';
 
 import React from 'react';
 import styled from 'styled-components';
-require('../icons/money.svg')
-require('../icons/tag.svg')
-require('../icons/statistics.svg')
+import Icon from "./Icon"
 
 const NavWrapper = styled.nav`
   box-shadow: 0 0 3px rgb(0,0,0,0.25);
@@ -29,21 +27,15 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-          <svg fill="red">
-            <use xlinkHref="#tag">hi</use>
-          </svg>
+          <Icon name="tag" fill="red"/>
           <Link to="/tags"> 标签页</Link>
         </li>
         <li>
-            <svg fill="red">
-            <use xlinkHref="#money">hi</use>
-          </svg>
+          <Icon name="money" fill="blue"/>
           <Link to="/money">记账页</Link>
         </li>
         <li>
-          <svg>
-            <use xlinkHref="#statistics">hi</use>
-          </svg>
+          <Icon name="statistics" fill="green"/>
           <Link to="/statistics">统计页</Link>
         </li>
       </ul>

@@ -1829,6 +1829,11 @@
     "@types/testing-library__dom" "*"
     pretty-format "^25.1.0"
 
+"@types/webpack-env@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.npm.taobao.org/@types/webpack-env/download/@types/webpack-env-1.16.0.tgz#8c0a9435dfa7b3b1be76562f3070efb3f92637b4"
+  integrity sha1-jAqUNd+ns7G+dlYvMHDvs/kmN7Q=
+
 "@types/yargs-parser@*":
   version "15.0.0"
   resolved "https://registry.npm.taobao.org/@types/yargs-parser/download/@types/yargs-parser-15.0.0.tgz?cache=0&sync_timestamp=1596840530983&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fyargs-parser%2Fdownload%2F%40types%2Fyargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
@@ -10314,28 +10319,9 @@ svgo-loader@^2.2.1:
     js-yaml "^3.13.1"
     loader-utils "^1.0.3"
 
-svgo@^1.0.0, svgo@^1.2.2:
+svgo@^1.0.0, svgo@^1.2.2, svgo@^1.3.2:
   version "1.3.2"
   resolved "https://registry.npm.taobao.org/svgo/download/svgo-1.3.2.tgz#b6dc511c063346c9e415b81e43401145b96d4167"
-  integrity sha1-ttxRHAYzRsnkFbgeQ0ARRbltQWc=
-  dependencies:
-    chalk "^2.4.1"
-    coa "^2.0.2"
-    css-select "^2.0.0"
-    css-select-base-adapter "^0.1.1"
-    css-tree "1.0.0-alpha.37"
-    csso "^4.0.2"
-    js-yaml "^3.13.1"
-    mkdirp "~0.5.1"
-    object.values "^1.1.0"
-    sax "~1.2.4"
-    stable "^0.1.8"
-    unquote "~1.1.1"
-    util.promisify "~1.0.0"
-
-svgo@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.npm.taobao.org/svgo/download/svgo-1.3.2.tgz?cache=0&sync_timestamp=1572433264480&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsvgo%2Fdownload%2Fsvgo-1.3.2.tgz#b6dc511c063346c9e415b81e43401145b96d4167"
   integrity sha1-ttxRHAYzRsnkFbgeQ0ARRbltQWc=
   dependencies:
     chalk "^2.4.1"
