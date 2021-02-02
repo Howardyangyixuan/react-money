@@ -4,10 +4,10 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from 'react-router-dom';
 import styled from 'styled-components';
+import Nav from './Components/Nav';
 
 const Wrapper = styled.div`
 height: 100vh;
@@ -21,17 +21,6 @@ flex-grow: 1;
 overflow: auto;
 `;
 
-const Nav = styled.nav`
-  box-shadow: 0 0 3px rgb(0,0,0,0.25);
-  > ul{
-    display: flex;
-    > li{
-      text-align: center;
-      width: 33.3%;
-      padding: 16px;
-    }
-}
-`;
 
 function App() {
   return (
@@ -54,22 +43,7 @@ function App() {
             </Route>
           </Switch>
         </Main>
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/tags">标签页</Link>
-            </li>
-            <li>
-              <Link to="/money">记账页</Link>
-            </li>
-            <li>
-              <Link to="/statistics">统计页</Link>
-            </li>
-          </ul>
-        </Nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+        <Nav/>
       </Wrapper>
     </Router>
   );
