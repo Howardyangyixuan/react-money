@@ -7,12 +7,56 @@ import {
   Link,
   Redirect
 } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+border: 2px solid red;
+height: 100vh;
+display: flex;
+flex-direction: column;
+`;
+
+const Main = styled.div`
+border: 1px solid green;
+flex-grow: 1;
+//自己的区域加滚动条
+overflow: auto;
+`;
+
+const Nav = styled.nav`
+  border: 1px solid blue;
+  > ul{
+    display: flex;
+    > li{
+      text-align: center;
+      width: 33.3%;
+      padding: 16px;
+    }
+}
+`;
 
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
+      <Wrapper>
+        <Main>
+          <Switch>
+            <Redirect from="/" exact to="/tags"/>
+            <Route path="/tags">
+              <Tags/>
+            </Route>
+            <Route path="/money">
+              <Money/>
+            </Route>
+            <Route path="/statistics">
+              <Statistics/>
+            </Route>
+            <Route path="*">
+              <NoMatch/>
+            </Route>
+          </Switch>
+        </Main>
+        <Nav>
           <ul>
             <li>
               <Link to="/tags">标签页</Link>
@@ -24,26 +68,11 @@ function App() {
               <Link to="/statistics">统计页</Link>
             </li>
           </ul>
-        </nav>
+        </Nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Redirect from="/" exact to="/tags"/>
-          <Route path="/tags">
-            <Tags/>
-          </Route>
-          <Route path="/money">
-            <Money/>
-          </Route>
-          <Route path="/statistics">
-            <Statistics/>
-          </Route>
-          <Route path="*">
-            <NoMatch/>
-          </Route>
-        </Switch>
-      </div>
+      </Wrapper>
     </Router>
   );
 }
@@ -57,10 +86,47 @@ function Tags() {
 }
 
 function Money() {
-  return <h2>Money</h2>;
+  return (
+    <>
+      <h2>Money </h2>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+      <p>h</p>
+    </>
+  );
+
 }
 
 function NoMatch() {
   return <h2>404</h2>;
 }
+
 export default App;
