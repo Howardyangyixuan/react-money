@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import Money from './views/Money';
 import Statistics from './views/Statistics';
-import Tags from './views/Tag';
+import Tags from './views/Tags';
 import NoMatch from './views/NoMatch';
 import styled from 'styled-components';
 
