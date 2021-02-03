@@ -25,6 +25,24 @@ padding: 12px 16px;
   }
 `;
 const NotesSection = styled.section`
+background: #f5f5f5;
+padding: 10px 16px;
+font-size: 14px;
+  > label{
+  display: flex;
+  align-items: center;
+    > span{
+    margin-right: 16px;
+    white-space: nowrap;
+    }
+    > input{
+    display: block;
+    width: 100%;
+    height: 72px;
+    border: none;
+    background: none;
+    }
+  }
 `;
 const CategorySection = styled.section`
 `;
@@ -44,14 +62,14 @@ function Tags() {
         <button>新增标签</button>
       </TagsSection>
       <NotesSection>
-        <button>支出</button>
-        <button>收入</button>
-      </NotesSection>
-      <CategorySection>
         <label>
           <span>备注</span>
-          <input type="text" value="在这里添加备注"/>
+          <input type="text" placeholder="请在这里添加备注"/>
         </label>
+      </NotesSection>
+      <CategorySection>
+        <button>支出</button>
+        <button>收入</button>
       </CategorySection>
       <NumberPadSection>
         <button>1</button>
