@@ -45,6 +45,28 @@ font-size: 14px;
   }
 `;
 const CategorySection = styled.section`
+font-size: 24px;
+> ul{
+  display: flex;
+  background: #c4c4c4;
+  > li{
+  width: 50%;
+  text-align: center;
+  padding: 16px 0; 
+  position: relative;
+  &.selected::after{
+  content: '';
+  width: 100%;
+  display: block;
+  height: 3px;
+  background: #333;
+  bottom: 0;
+  position: absolute;
+  left:0
+  }
+  }
+  
+}
 `;
 const NumberPadSection = styled.section`
 `;
@@ -68,8 +90,10 @@ function Tags() {
         </label>
       </NotesSection>
       <CategorySection>
-        <button>支出</button>
-        <button>收入</button>
+        <ul>
+          <li className="selected">支出</li>
+          <li>收入</li>
+        </ul>
       </CategorySection>
       <NumberPadSection>
         <button>1</button>
