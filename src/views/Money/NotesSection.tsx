@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 
 const NotesSection:FC = (props:any) => {
+  const [note,setNote] =useState<string>("")
+  console.log(note);
   return (
     <_NotesSection>
       <label>
         <span>备注</span>
-        <input type="text" placeholder="请在这里添加备注"/>
+        <input defaultValue={note} onBlur={(e)=>{setNote(e.target.value)}} type="text" placeholder="请在这里添加备注"/>
       </label>
     </_NotesSection>
   );
