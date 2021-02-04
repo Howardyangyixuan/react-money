@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {FC} from 'react';
 
-const TagsSection = (props:any)=>{
+const TagsSection:FC = (props:any)=>{
   return (
     <_TagsSection>
       <ol>

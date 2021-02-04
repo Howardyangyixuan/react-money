@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {FC} from 'react';
 
-const NotesSection = (props:any) => {
+const NotesSection:FC = (props:any) => {
   return (
     <_NotesSection>
       <label>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {FC} from 'react';
 
-const NumberPadSection = (props:any) => {
+const NumberPadSection:FC = (props:any) => {
   return (
     <_NumberPadSection>
       <div className="output">100</div>
