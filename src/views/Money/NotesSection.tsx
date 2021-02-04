@@ -7,7 +7,6 @@ type Props = {
 }
 const NotesSection:FC<Props> = (props) => {
   const note = props.value
-  console.log(note);
   return (
     <NotesSectionWrapper>
       <label>
