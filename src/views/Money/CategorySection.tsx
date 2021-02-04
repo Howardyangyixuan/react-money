@@ -1,6 +1,18 @@
 import styled from 'styled-components';
+import React, {FC} from 'react';
 
-const CategorySection = styled.section`
+
+const CategorySection:FC = (props: any) => {
+  return (
+    <_CategorySection>
+      <ul>
+        <li className="selected">支出</li>
+        <li>收入</li>
+      </ul>
+    </_CategorySection>
+  );
+};
+const _CategorySection = styled.section`
 font-size: 24px;
 > ul{
   display: flex;
@@ -25,4 +37,4 @@ font-size: 24px;
 }
 `;
 
-export {CategorySection}
+export {CategorySection};
