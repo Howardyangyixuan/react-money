@@ -11,7 +11,7 @@ display: flex;
 flex-direction: column;
 `;
 
-function Tags() {
+function Money() {
   return (
     <MyLayout>
       <TagsSection/>
@@ -22,4 +22,4 @@ function Tags() {
   );
 }
 
-export default Tags;
+export default Money;

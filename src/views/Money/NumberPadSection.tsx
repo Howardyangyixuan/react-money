@@ -5,7 +5,6 @@ const NumberPadSection: FC = (props: any) => {
   const [output, setOutput] = useState('0');
   const input = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
-    console.log(text);
     const len = output.length
     if (!text) return;
     else {
