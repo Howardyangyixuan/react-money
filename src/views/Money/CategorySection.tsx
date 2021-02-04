@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 
 
 const CategorySection:FC = (props: any) => {
+  const [isIncome,setIsIncome] = useState<boolean>(false)
   return (
     <_CategorySection>
       <ul>
-        <li className="selected">支出</li>
-        <li>收入</li>
+        <li className={!isIncome?"selected":""} onClick={()=>setIsIncome(false)}>支出</li>
+        <li className={isIncome?"selected":""} onClick={()=>setIsIncome(true)}>收入</li>
       </ul>
     </_CategorySection>
   );
