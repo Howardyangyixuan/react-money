@@ -1,19 +1,40 @@
 import styled from 'styled-components';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 
-const TagsSection:FC = (props:any)=>{
+const TagsSection: FC = (props: any) => {
+  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+  const [selectedTags, setSelectedTags] = useState<number[]>([0, 0, 0, 0]);
+  const addTag = () => {
+    const tag = window.prompt('请输入新标签');
+    if (tag) {
+      setTags([...tags, tag.toString()]);
+      const sTags = [...selectedTags, 0];
+      setSelectedTags(sTags);
+    }
+
+  };
+  const toggleTag = (index: number) => {
+    const tags = [...selectedTags];
+    tags[index] = 1 - tags[index];
+    setSelectedTags(tags);
+  };
+
+  const getClass = (index: number) => {
+    return selectedTags[index] === 1 ? 'selected' : '';
+  };
+
   return (
     <_TagsSection>
       <ol>
-        <li>衣</li>
-        <li>食</li>
-        <li>住</li>
-        <li>行</li>
+        {tags.map((item, index) => {
+          return <li className={getClass(index)} onClick={() => toggleTag(index)}
+                     key={index}>{item}</li>;
+        })}
       </ol>
-      <button>新增标签</button>
+      <button onClick={addTag}>新增标签</button>
     </_TagsSection>
-  )
-}
+  );
+};
 const _TagsSection = styled.section`
 background: #FFFFFF;
 padding: 12px 16px;
@@ -30,7 +51,10 @@ align-items: flex-start;
   border-radius: 18px;
   padding: 3px 18px;
   font-size: 14px;
-  margin: 0 12px;
+  margin: 3px 12px;
+  &.selected{
+    background: red;
+  }
   }
 }
   > button{
@@ -41,4 +65,4 @@ align-items: flex-start;
   margin-top: 8px;
   }
 `;
-export {TagsSection}
+export {TagsSection};
