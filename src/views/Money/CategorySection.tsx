@@ -3,12 +3,17 @@ import React, {FC, useState} from 'react';
 
 
 const CategorySection:FC = (props: any) => {
-  const [isIncome,setIsIncome] = useState<boolean>(false)
+  const categoryList = useState<string[]>(["收入","支出"])[0]
+  const [category,setCategory] = useState<string>("支出")
+  const getClass=(cate:string)=>{
+    return cate===category?"selected":""
+  }
   return (
     <_CategorySection>
       <ul>
-        <li className={!isIncome?"selected":""} onClick={()=>setIsIncome(false)}>支出</li>
-        <li className={isIncome?"selected":""} onClick={()=>setIsIncome(true)}>收入</li>
+        {categoryList.map((item)=>{
+          return <li className={getClass(item)} onClick={()=>setCategory(item)}>{item}</li>
+        })}
       </ul>
     </_CategorySection>
   );
