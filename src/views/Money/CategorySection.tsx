@@ -2,14 +2,18 @@ import styled from 'styled-components';
 import React, {FC, useState} from 'react';
 
 
-const CategorySection:FC = (props: any) => {
+type Props = {
+  value:("+"|"-"),
+  onChange:(item:("+"|"-"))=>void
+}
+const CategorySection:FC<Props> = (prop) => {
   const categoryMap = {
     "+":"收入",
     "-":"支出",
   }
   type T = keyof typeof categoryMap;
   const categoryList = useState<T[]>(["+","-"])[0]
-  const [category,setCategory] = useState<T>("-")
+  const category = prop.value
   const getClass=(cate:string)=>{
     return cate===category?"selected":""
   }
@@ -17,7 +21,7 @@ const CategorySection:FC = (props: any) => {
     <CategorySectionWrapper>
       <ul>
         {categoryList.map((item)=>{
-          return <li key={item} className={getClass(item)} onClick={()=>setCategory(item)}>{categoryMap[item]}</li>
+          return <li key={item} className={getClass(item)} onClick={()=>prop.onChange(item)}>{categoryMap[item]}</li>
         })}
       </ul>
     </CategorySectionWrapper>

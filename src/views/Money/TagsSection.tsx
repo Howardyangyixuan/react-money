@@ -1,22 +1,30 @@
 import styled from 'styled-components';
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 
-const TagsSection: FC = (props: any) => {
-  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-  const [selectedTags, setSelectedTags] = useState<number[]>([0, 0, 0, 0]);
+type Props= {
+  value:{tags:string[],selectedTags:number[]},
+  onChange:(tags:string[],selectedTags:number[])=>void
+}
+const TagsSection: FC<Props> = (props) => {
+  const tags = props.value.tags;
+  const selectedTags = props.value.selectedTags;
   const addTag = () => {
     const tag = window.prompt('请输入新标签');
     if (tag) {
-      setTags([...tags, tag.toString()]);
-      const sTags = [...selectedTags, 0];
-      setSelectedTags(sTags);
+      props.onChange(
+        [...tags, tag.toString()],
+        [...selectedTags, 0]
+      );
+
     }
 
   };
   const toggleTag = (index: number) => {
-    const tags = [...selectedTags];
-    tags[index] = 1 - tags[index];
-    setSelectedTags(tags);
+    const sTags = [...selectedTags];
+    sTags[index] = 1 - sTags[index];
+    props.onChange(
+      [...tags],
+      [...sTags]);
   };
 
   const getClass = (index: number) => {

@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 import React, {FC, useState} from 'react';
 
-const NumberPadSection: FC = (props: any) => {
-  const [output, setOutput] = useState('0');
+type Props = {
+  value:number,
+  onChange:(number:number)=>void
+}
+const NumberPadSection: FC<Props> = (props ) => {
+  const outputInit = props.value.toString()
+  const [output,setOutput] = useState(outputInit)
+  const Ok=(text:string)=>{
+    const number = parseFloat(text)
+    console.log(number);
+    props.onChange(number)
+  }
   const input = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     const len = output.length
@@ -29,8 +39,8 @@ const NumberPadSection: FC = (props: any) => {
             setOutput(output + text);
           }
           break;
-        case 'ok':
-          setOutput('');
+        case 'OK':
+          Ok(output)
           break;
         case '清空':
           setOutput('0');
