@@ -5,15 +5,15 @@ const NotesSection:FC = (props:any) => {
   const [note,setNote] =useState<string>("")
   console.log(note);
   return (
-    <_NotesSection>
+    <NotesSectionWrapper>
       <label>
         <span>备注</span>
         <input defaultValue={note} onBlur={(e)=>{setNote(e.target.value)}} type="text" placeholder="请在这里添加备注"/>
       </label>
-    </_NotesSection>
+    </NotesSectionWrapper>
   );
 };
-const _NotesSection = styled.section`
+const NotesSectionWrapper = styled.section`
 background: #f5f5f5;
 padding: 10px 16px;
 font-size: 14px;

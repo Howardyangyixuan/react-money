@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React, {FC, useState} from 'react';
-import {type} from 'os';
 
 
 const CategorySection:FC = (props: any) => {
@@ -15,16 +14,16 @@ const CategorySection:FC = (props: any) => {
     return cate===category?"selected":""
   }
   return (
-    <_CategorySection>
+    <CategorySectionWrapper>
       <ul>
         {categoryList.map((item)=>{
           return <li key={item} className={getClass(item)} onClick={()=>setCategory(item)}>{categoryMap[item]}</li>
         })}
       </ul>
-    </_CategorySection>
+    </CategorySectionWrapper>
   );
 };
-const _CategorySection = styled.section`
+const CategorySectionWrapper = styled.section`
 font-size: 24px;
 > ul{
   display: flex;

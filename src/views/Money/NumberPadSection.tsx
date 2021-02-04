@@ -1,11 +1,57 @@
 import styled from 'styled-components';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 
-const NumberPadSection:FC = (props:any) => {
+const NumberPadSection: FC = (props: any) => {
+  const [output, setOutput] = useState('0');
+  const input = (e: React.MouseEvent) => {
+    const text = (e.target as HTMLButtonElement).textContent;
+    console.log(text);
+    const len = output.length
+    if (!text) return;
+    else {
+      switch (text) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '.':
+          if(output.indexOf(".")!==-1 && text==="."){
+            return;
+          }
+          if (output === '0' && text!==".") {
+            setOutput(text);
+          } else if(len<=16) {
+            setOutput(output + text);
+          }
+          break;
+        case 'ok':
+          setOutput('');
+          break;
+        case '清空':
+          setOutput('0');
+          break;
+        case '删除':
+          if (len === 1) {
+            setOutput('0');
+          } else {
+            setOutput(output.substr(0, len - 1));
+          }
+
+          break;
+      }
+    }
+  };
+
   return (
-    <_NumberPadSection>
-      <div className="output">100</div>
-      <div className="pad clearfix">
+    <NumberPadSectionWrapper>
+      <div className="output">{output}</div>
+      <div className="pad clearfix" onClick={input}>
         <button>1</button>
         <button>2</button>
         <button>3</button>
@@ -21,10 +67,10 @@ const NumberPadSection:FC = (props:any) => {
         <button className="zero">0</button>
         <button>.</button>
       </div>
-    </_NumberPadSection>
+    </NumberPadSectionWrapper>
   );
 };
-const _NumberPadSection = styled.section`
+const NumberPadSectionWrapper = styled.section`
 display: flex;
 flex-direction: column;
   > .output{

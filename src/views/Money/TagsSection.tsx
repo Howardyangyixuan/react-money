@@ -24,7 +24,7 @@ const TagsSection: FC = (props: any) => {
   };
 
   return (
-    <_TagsSection>
+    <TagsSectionWrapper>
       <ol>
         {tags.map((item, index) => {
           return <li className={getClass(index)} onClick={() => toggleTag(index)}
@@ -32,10 +32,10 @@ const TagsSection: FC = (props: any) => {
         })}
       </ol>
       <button onClick={addTag}>新增标签</button>
-    </_TagsSection>
+    </TagsSectionWrapper>
   );
 };
-const _TagsSection = styled.section`
+const TagsSectionWrapper = styled.section`
 background: #FFFFFF;
 padding: 12px 16px;
 flex-grow: 1;
