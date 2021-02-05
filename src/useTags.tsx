@@ -1,11 +1,17 @@
 import {useState} from 'react';
+import {Tag} from './views/helper';
 
-const useTags = ()=>{
-  const [tags, setTags] = useState(['衣', '食', '住', '行'])
-  return{
+const useTags = () => {
+  const [tags, setTags] = useState<Tag[]>([
+    {id: 1, name: '衣'},
+    {id: 2, name: '食'},
+    {id: 3, name: '住'},
+    {id: 4, name: '行'},
+  ])
+  return {
     tags,
     setTags
-  }
-}
+  };
+};
 
-export {useTags}
+export {useTags};

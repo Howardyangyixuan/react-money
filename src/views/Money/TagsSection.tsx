@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import React, {FC} from 'react';
+import {Tag} from '../helper';
 
 type Props= {
-  value:{tags:string[],selectedTags:number[]},
-  onChange:(tags:string[],selectedTags:number[])=>void
+  value:{tags:Tag[],selectedTagsMarker:number[]},
+  onChange:(tags:Tag[],selectedTagsMarker:number[])=>void
 }
 const TagsSection: FC<Props> = (props) => {
   const tags = props.value.tags;
-  const selectedTags = props.value.selectedTags;
+  const selectedTags = props.value.selectedTagsMarker;
   const addTag = () => {
     const tag = window.prompt('请输入新标签');
     if (tag) {
       props.onChange(
-        [...tags, tag.toString()],
+        [...tags, {id:tags.length+1,name:tag.toString()}],
         [...selectedTags, 0]
       );
 
@@ -36,7 +37,7 @@ const TagsSection: FC<Props> = (props) => {
       <ol>
         {tags.map((item, index) => {
           return <li className={getClass(index)} onClick={() => toggleTag(index)}
-                     key={index}>{item}</li>;
+                     key={index}>{item.name}</li>;
         })}
       </ol>
       <button onClick={addTag}>新增标签</button>
