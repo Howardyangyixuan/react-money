@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, {FC} from 'react';
 import {Tag} from '../helper';
+import {createId} from '../../lib/createId';
 
 type Props= {
   value:{tags:Tag[],selectedTagsMarker:number[]},
@@ -13,7 +14,7 @@ const TagsSection: FC<Props> = (props) => {
     const tag = window.prompt('请输入新标签');
     if (tag) {
       props.onChange(
-        [...tags, {id:tags.length+1,name:tag.toString()}],
+        [...tags, {id:createId(),name:tag.toString()}],
         [...selectedTags, 0]
       );
 

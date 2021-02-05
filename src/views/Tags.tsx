@@ -25,6 +25,21 @@ background: white;
 }
 `;
 
+const Center = styled.div`
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Button = styled.button`
+font-size: 18px;
+background: #333;
+border: none;
+padding: 8px 12px;
+color: white;
+border-radius: 4px;
+`
 function Tags() {
   const {tags, setTags} = useTags();
   return (
@@ -34,14 +49,18 @@ function Tags() {
           return (
             <li key={tag.id}>
               <Link to={'/tags/' + tag.id}>
-                <span className="oneLine">{tag.name}</span>
+                <span className="oneLine">{tag.id}{tag.name}</span>
                 <Icon name="right"/>
               </Link>
             </li>
           );
         })}
       </TagList>
-      <h2>Tags</h2>
+      <Center>
+        <Button>
+          新增标签
+        </Button>
+      </Center>
     </Layout>
   );
 }
