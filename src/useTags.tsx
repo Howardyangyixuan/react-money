@@ -17,7 +17,7 @@ const useTags = () => {
     const index = tags.findIndex(tag=>tag.id===id)
     console.log(index);
     if(index>=0){
-      const newTags = [...tags]
+      const newTags = JSON.parse(JSON.stringify(tags))
       newTags[index].name = name
       setTags(newTags)
     }
