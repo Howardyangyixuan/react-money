@@ -10,28 +10,26 @@ const defaultTags = [
 ];
 const useTags = () => {
   const [tags, setTags] = useState<Tag[]>(defaultTags);
-  const findTag = (id:number)=>{
-    return tags.find(tag => tag.id === id)
-  }
-  const updateTag = (id:number,name:string)=>{
-    const index = tags.findIndex(tag=>tag.id===id)
-    console.log(index);
-    if(index>=0){
-      const newTags = JSON.parse(JSON.stringify(tags))
-      newTags[index].name = name
-      setTags(newTags)
-    }
-  }
-  const addTag = (name:string)=>{
-    const newTags = [...tags,{id: createId(), name}]
-    setTags(newTags)
-  }
+  const findTag = (id: number) => {
+    return tags.find(tag => tag.id === id);
+  };
+  const updateTag = (id: number, name: string) => {
+    setTags(tags.map(tag => tag.id === id ? {id, name} : tag));
+  };
+  const addTag = (name: string) => {
+    const newTags = [...tags, {id: createId(), name}];
+    setTags(newTags);
+  };
+  const deleteTag = (id: number) => {
+    setTags(tags.filter(tag => tag.id !== id));
+  };
   return {
     tags,
     setTags,
     findTag,
     updateTag,
-    addTag
+    addTag,
+    deleteTag
   };
 };
 

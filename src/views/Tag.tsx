@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, Redirect} from 'react-router-dom';
 import {useTags} from '../useTags';
 import Layout from '../Components/Layout';
 import Icon from '../Components/Icon';
@@ -32,10 +32,10 @@ align-items: center;
 `;
 const Tag: FC = () => {
   const {tagId} = useParams();
-  const {tags, findTag, updateTag} = useTags();
+  const {tags, findTag, updateTag,deleteTag} = useTags();
   const tag = findTag(parseInt(tagId));
   return (
-    !tag ? <NoMatch/> :
+    !tag ? <Redirect to="/tags"/> :
       (<Layout>
         <TagWrapper>
           <TopBar>
@@ -50,7 +50,8 @@ const Tag: FC = () => {
                    onBlur={(e) => updateTag(tag.id, e.target.value)}/>
           </InputWrapper>
           <Center>
-            <Button>删除标签</Button>
+            <Button onClick={()=>{deleteTag(tag.id)
+              console.log('hi');}}>删除标签</Button>
           </Center>
           <div>{tag.id}:{tag.name}</div>
           {tags.map((tag) => <li key={tag.id}>{tag.name}</li>)}
