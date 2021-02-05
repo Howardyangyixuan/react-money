@@ -4,6 +4,7 @@ import {useTags} from '../useTags';
 import styled from 'styled-components';
 import Icon from '../Components/Icon';
 import {Link} from 'react-router-dom';
+import {Center} from '../Components/Center';
 
 const TagList = styled.ol`
 font-size: 16px;
@@ -25,12 +26,6 @@ background: white;
 }
 `;
 
-const Center = styled.div`
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
 const Button = styled.button`
 font-size: 18px;
