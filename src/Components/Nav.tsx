@@ -23,8 +23,8 @@ background: white;
       text-align: center;
       width: 33.3%;
       svg{
-      height: 36px;
-      width: 36px;
+      height: 24px;
+      width: 24px;
       }
     }
 }

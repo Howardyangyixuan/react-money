@@ -5,6 +5,7 @@ import {NotesSection} from './Money/NotesSection';
 import {NumberPadSection} from './Money/NumberPadSection';
 import {TagsSection} from './Money/TagsSection';
 import {CategorySection} from './Money/CategorySection';
+import {useTags} from '../useTags';
 
 const MyLayout = styled(Layout)`
 display: flex;
@@ -20,8 +21,9 @@ type MoneyData = {
 }
 
 function Money() {
+  const {tags, setTags} = useTags()
   const [moneyData, setMoneyData] = useState<MoneyData>({
-    tags: ['衣', '食', '住', '行'],
+    tags ,
     selectedTags: [0, 0, 0, 0],
     note: '',
     category: '-',
@@ -29,6 +31,10 @@ function Money() {
   });
 
   const onChange = (data: Partial<MoneyData>) => {
+    if(data.tags) {
+      console.log('set');
+      setTags(data.tags)
+    }
     setMoneyData({
       ...moneyData,
       ...data

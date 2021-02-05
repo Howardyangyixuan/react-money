@@ -46,3 +46,14 @@ body {
   display: block;
   clear: both;
 }
+
+.icon{
+  height: 1em;
+  width: 1em;
+}
+
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
