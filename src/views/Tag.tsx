@@ -7,7 +7,7 @@ import {Button} from '../Components/Button';
 import styled from 'styled-components';
 import {Input} from '../Components/Input';
 import {Center} from '../Components/Center';
-import {createId} from '../lib/createId';
+import NoMatch from './NoMatch';
 
 
 const TagWrapper = styled.div`
@@ -32,28 +32,30 @@ align-items: center;
 `;
 const Tag: FC = () => {
   const {tagId} = useParams();
-  const {tags, findTag, setTags} = useTags();
+  const {tags, findTag, updateTag} = useTags();
   const tag = findTag(parseInt(tagId));
   return (
-    <Layout>
-      <TagWrapper>
-        <TopBar>
-          <Link to="/tags">
-            <Icon name="left"/>
-          </Link>
-          <span>编辑标签</span>
-          <Icon name=""/>
-        </TopBar>
-        <InputWrapper>
-          <Input label="标签名" placeholder="请修改标签名" defaultValue={tag.name}
-                 onBlur={(e) => setTags([...tags, {id: createId(), name: e.target.value}])}/>
-        </InputWrapper>
-        <Center>
-          <Button>删除标签</Button>
-        </Center>
-        <div>{tag.id}:{tag.name}</div>
-      </TagWrapper>
-    </Layout>
+    !tag ? <NoMatch/> :
+      (<Layout>
+        <TagWrapper>
+          <TopBar>
+            <Link to="/tags">
+              <Icon name="left"/>
+            </Link>
+            <span>编辑标签</span>
+            <Icon name=""/>
+          </TopBar>
+          <InputWrapper>
+            <Input label="标签名" placeholder="请修改标签名" defaultValue={tag.name}
+                   onBlur={(e) => updateTag(tag.id, e.target.value)}/>
+          </InputWrapper>
+          <Center>
+            <Button>删除标签</Button>
+          </Center>
+          <div>{tag.id}:{tag.name}</div>
+          {tags.map((tag) => <li key={tag.id}>{tag.name}</li>)}
+        </TagWrapper>
+      </Layout>)
   );
 };
 export {Tag};

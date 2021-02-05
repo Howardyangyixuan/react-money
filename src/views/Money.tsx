@@ -22,9 +22,9 @@ type MoneyData = {
 }
 
 function Money() {
-  const {tags, setTags} = useTags()
+  const {tags, setTags} = useTags();
   const [moneyData, setMoneyData] = useState<MoneyData>({
-    tags ,
+    tags,
     selectedTagsMarker: [0, 0, 0, 0],
     note: '',
     category: '-',
@@ -32,8 +32,10 @@ function Money() {
   });
 
   const onChange = (data: Partial<MoneyData>) => {
-    if(data.tags) {
-     setTags(data.tags)
+    if (data.tags) {
+      //以防万一，即使传入的是原对象也可以统一处理，深拷贝生成新对象
+      const newTags = JSON.parse(JSON.stringify(data.tags));
+      setTags(newTags);
     }
     setMoneyData({
       ...moneyData,

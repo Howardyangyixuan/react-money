@@ -36,7 +36,13 @@ color: white;
 border-radius: 4px;
 `
 function Tags() {
-  const {tags, setTags} = useTags();
+  const {tags, addTag} = useTags();
+  const onClick =  ()=>{
+    const name = window.prompt()
+    if(name){
+      addTag(name)
+    }
+  }
   return (
     <Layout>
       <TagList>
@@ -52,7 +58,7 @@ function Tags() {
         })}
       </TagList>
       <Center>
-        <Button>
+        <Button onClick={onClick}>
           新增标签
         </Button>
       </Center>

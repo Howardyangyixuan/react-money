@@ -3,23 +3,21 @@ import React, {FC} from 'react';
 import {Tag} from '../helper';
 import {createId} from '../../lib/createId';
 
-type Props= {
-  value:{tags:Tag[],selectedTagsMarker:number[]},
-  onChange:(tags:Tag[],selectedTagsMarker:number[])=>void
+type Props = {
+  value: { tags: Tag[], selectedTagsMarker: number[] },
+  onChange: (tags: Tag[], selectedTagsMarker: number[]) => void
 }
 const TagsSection: FC<Props> = (props) => {
   const tags = props.value.tags;
   const selectedTags = props.value.selectedTagsMarker;
-  const addTag = () => {
+  const addTagPrompt = () => {
     const tag = window.prompt('请输入新标签');
     if (tag) {
       props.onChange(
-        [...tags, {id:createId(),name:tag.toString()}],
+        [...tags, {id: createId(), name: tag.toString()}],
         [...selectedTags, 0]
       );
-
     }
-
   };
   const toggleTag = (index: number) => {
     const sTags = [...selectedTags];
@@ -41,7 +39,7 @@ const TagsSection: FC<Props> = (props) => {
                      key={index}>{item.name}</li>;
         })}
       </ol>
-      <button onClick={addTag}>新增标签</button>
+      <button onClick={addTagPrompt}>新增标签</button>
     </TagsSectionWrapper>
   );
 };

@@ -11,12 +11,27 @@ const defaultTags = [
 const useTags = () => {
   const [tags, setTags] = useState<Tag[]>(defaultTags);
   const findTag = (id:number)=>{
-    return tags.filter(tag => tag.id === id)[0]
+    return tags.find(tag => tag.id === id)
+  }
+  const updateTag = (id:number,name:string)=>{
+    const index = tags.findIndex(tag=>tag.id===id)
+    console.log(index);
+    if(index>=0){
+      const newTags = [...tags]
+      newTags[index].name = name
+      setTags(newTags)
+    }
+  }
+  const addTag = (name:string)=>{
+    const newTags = [...tags,{id: createId(), name}]
+    setTags(newTags)
   }
   return {
     tags,
     setTags,
-    findTag
+    findTag,
+    updateTag,
+    addTag
   };
 };
 
