@@ -25,12 +25,11 @@ function Money() {
   const {tags, setTags} = useTags();
   const [moneyData, setMoneyData] = useState<MoneyData>({
     tags,
-    selectedTagsMarker: [0, 0, 0, 0],
+    selectedTagsMarker: tags.map(()=>0),
     note: '',
     category: '-',
     output: 0
   });
-
   const onChange = (data: Partial<MoneyData>) => {
     if (data.tags) {
       //以防万一，即使传入的是原对象也可以统一处理，深拷贝生成新对象

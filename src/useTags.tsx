@@ -1,15 +1,21 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Tag} from './views/helper';
 import {createId} from './lib/createId';
 
 const defaultTags = [
-  {id: createId(), name: '衣'},
-  {id: createId(), name: '食'},
-  {id: createId(), name: '住'},
-  {id: createId(), name: '行'},
+  {id: 0, name: '衣'},
+  {id: 1, name: '食'},
+  {id: 2, name: '住'},
+  {id: 3, name: '行'},
 ];
+
 const useTags = () => {
-  const [tags, setTags] = useState<Tag[]>(defaultTags);
+  const stringTag = window.localStorage.getItem('tags');
+  const localTags = stringTag ? JSON.parse(stringTag) : defaultTags;
+  const [tags, setTags] = useState<Tag[]>(localTags);
+  useEffect(() => {
+    window.localStorage.setItem('tags', JSON.stringify(tags));
+  }, [tags]);
   const findTag = (id: number) => {
     return tags.find(tag => tag.id === id);
   };

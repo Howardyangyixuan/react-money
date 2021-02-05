@@ -7,7 +7,6 @@ import {Button} from '../Components/Button';
 import styled from 'styled-components';
 import {Input} from '../Components/Input';
 import {Center} from '../Components/Center';
-import NoMatch from './NoMatch';
 
 
 const TagWrapper = styled.div`
@@ -32,7 +31,7 @@ align-items: center;
 `;
 const Tag: FC = () => {
   const {tagId} = useParams();
-  const {tags, findTag, updateTag,deleteTag} = useTags();
+  const {tags, findTag, updateTag, deleteTag} = useTags();
   const tag = findTag(parseInt(tagId));
   return (
     !tag ? <Redirect to="/tags"/> :
@@ -50,8 +49,7 @@ const Tag: FC = () => {
                    onBlur={(e) => updateTag(tag.id, e.target.value)}/>
           </InputWrapper>
           <Center>
-            <Button onClick={()=>{deleteTag(tag.id)
-              console.log('hi');}}>删除标签</Button>
+            <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
           </Center>
           <div>{tag.id}:{tag.name}</div>
           {tags.map((tag) => <li key={tag.id}>{tag.name}</li>)}
