@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Link, useParams, Redirect} from 'react-router-dom';
-import {useTags} from '../useTags';
+import {useTags} from '../hooks/useTags';
 import Layout from '../Components/Layout';
 import Icon from '../Components/Icon';
 import {Button} from '../Components/Button';

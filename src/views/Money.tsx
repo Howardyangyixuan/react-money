@@ -5,7 +5,7 @@ import {NotesSection} from './Money/NotesSection';
 import {NumberPadSection} from './Money/NumberPadSection';
 import {TagsSection} from './Money/TagsSection';
 import {CategorySection} from './Money/CategorySection';
-import {useTags} from '../useTags';
+import {useTags} from '../hooks/useTags';
 import {Tag} from './helper';
 
 const MyLayout = styled(Layout)`
@@ -44,6 +44,7 @@ function Money() {
 
   return (
     <MyLayout>
+      {JSON.stringify(moneyData)}
       <TagsSection value={{tags: moneyData.tags, selectedTagsMarker: moneyData.selectedTagsMarker}}
                    onChange={(tags, selectedTagsMarker) => onChange({tags, selectedTagsMarker: selectedTagsMarker})}/>
       <NotesSection value={moneyData.note} onChange={note => onChange({note})}/>

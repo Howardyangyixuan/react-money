@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {Tag} from './views/helper';
-import {createId} from './lib/createId';
+import {Tag} from '../views/helper';
+import {createId} from '../lib/createId';
 import {useUpdate} from './useUpdate';
 
 const defaultTags = [
