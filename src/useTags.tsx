@@ -1,6 +1,7 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Tag} from './views/helper';
 import {createId} from './lib/createId';
+import {useUpdate} from './useUpdate';
 
 const defaultTags = [
   {id: 0, name: '衣'},
@@ -13,9 +14,9 @@ const useTags = () => {
   const stringTag = window.localStorage.getItem('tags');
   const localTags = stringTag ? JSON.parse(stringTag) : defaultTags;
   const [tags, setTags] = useState<Tag[]>(localTags);
-  useEffect(() => {
+  useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags));
-  }, [tags]);
+  }, tags);
   const findTag = (id: number) => {
     return tags.find(tag => tag.id === id);
   };
