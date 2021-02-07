@@ -1,13 +1,7 @@
 import {useState} from 'react';
 import {useUpdate} from './useUpdate';
+import {RecordItem} from '../views/helper';
 
-type RecordItem = {
-  tagsName: string[],
-  note: string,
-  category: '+' | '-',
-  output: number,
-  createdAt: string
-}
 export const useRecords = () => {
   const initRecordsString = window.localStorage.getItem('records');
   let initRecords = initRecordsString ? JSON.parse(initRecordsString) : [];

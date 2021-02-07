@@ -7,14 +7,16 @@ import {TagsSection} from './Money/TagsSection';
 import {CategorySection} from './Money/CategorySection';
 import {useTags} from '../hooks/useTags';
 import {useRecords} from '../hooks/useRecords';
-import {Tag} from './helper';
+import {Category, Tag} from './helper';
 
 const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
 `;
 
-type Category = '+' | '-'
+const CategorySectionWrapper = styled.div`
+background: #c4c4c4;
+`;
 
 type MoneyData = {
   tags: Tag[],
@@ -74,7 +76,9 @@ function Money() {
       <TagsSection value={{tags: moneyData.tags, selectedTagsMarker: moneyData.selectedTagsMarker}}
                    onChange={(tags, selectedTagsMarker) => onChange({tags, selectedTagsMarker: selectedTagsMarker})}/>
       <NotesSection value={moneyData.note} onChange={note => onChange({note})}/>
-      <CategorySection value={moneyData.category} onChange={category => onChange({category})}/>
+      <CategorySectionWrapper>
+        <CategorySection value={moneyData.category} onChange={category => onChange({category})}/>
+      </CategorySectionWrapper>
       <NumberPadSection value={moneyData.output} onChange={output => onChange({output})} onOk={() => onOK()}/>
     </MyLayout>
   );

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import React, {FC, useState} from 'react';
+import {Category} from '../helper';
 
 
 type Props = {
-  value:("+"|"-"),
+  value:Category
   onChange:(item:("+"|"-"))=>void
 }
 const CategorySection:FC<Props> = (prop) => {
@@ -31,7 +32,6 @@ const CategorySectionWrapper = styled.section`
 font-size: 24px;
 > ul{
   display: flex;
-  background: #c4c4c4;
   > li{
   width: 50%;
   text-align: center;
