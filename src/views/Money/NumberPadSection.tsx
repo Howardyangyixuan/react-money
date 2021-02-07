@@ -2,20 +2,22 @@ import styled from 'styled-components';
 import React, {FC, useState} from 'react';
 
 type Props = {
-  value:number,
-  onChange:(number:number)=>void
+  value: number,
+  onChange: (number: number) => void
+  onOk: () => void
 }
-const NumberPadSection: FC<Props> = (props ) => {
-  const outputInit = props.value.toString()
-  const [output,setOutput] = useState(outputInit)
-  const Ok=(text:string)=>{
-    const number = parseFloat(text)
+const NumberPadSection: FC<Props> = (props) => {
+  const outputInit = props.value.toString();
+  const [output, setOutput] = useState(outputInit);
+  const updateOutput = (text: string) => {
+    setOutput(text)
+    const number = parseFloat(text);
     console.log(number);
-    props.onChange(number)
-  }
+    props.onChange(number);
+  };
   const input = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
-    const len = output.length
+    const len = output.length;
     if (!text) return;
     else {
       switch (text) {
@@ -30,26 +32,31 @@ const NumberPadSection: FC<Props> = (props ) => {
         case '8':
         case '9':
         case '.':
-          if(output.indexOf(".")!==-1 && text==="."){
+          if (output.indexOf('.') !== -1 && text === '.') {
             return;
           }
-          if (output === '0' && text!==".") {
-            setOutput(text);
-          } else if(len<=16) {
-            setOutput(output + text);
+          if (output === '0' && text !== '.') {
+            // setOutput(text);
+            updateOutput(text)
+          } else if (len <= 16) {
+            // setOutput(output + text);
+            updateOutput(output+text)
           }
           break;
         case 'OK':
-          Ok(output)
+          props.onOk();
           break;
         case '清空':
-          setOutput('0');
+          // setOutput('0');
+          updateOutput('0')
           break;
         case '删除':
           if (len === 1) {
-            setOutput('0');
+            // setOutput('0');
+            updateOutput("0")
           } else {
-            setOutput(output.substr(0, len - 1));
+            // setOutput(output.substr(0, len - 1));
+            updateOutput(output.substr(0, len - 1));
           }
 
           break;
