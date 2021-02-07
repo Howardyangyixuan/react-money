@@ -10,10 +10,14 @@ const NumberPadSection: FC<Props> = (props) => {
   const outputInit = props.value.toString();
   const [output, setOutput] = useState(outputInit);
   const updateOutput = (text: string) => {
-    setOutput(text)
+    setOutput(text);
     const number = parseFloat(text);
     console.log(number);
     props.onChange(number);
+  };
+  const onOk = () => {
+    props.onOk();
+    setOutput('0');
   };
   const input = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
@@ -37,23 +41,23 @@ const NumberPadSection: FC<Props> = (props) => {
           }
           if (output === '0' && text !== '.') {
             // setOutput(text);
-            updateOutput(text)
+            updateOutput(text);
           } else if (len <= 16) {
             // setOutput(output + text);
-            updateOutput(output+text)
+            updateOutput(output + text);
           }
           break;
         case 'OK':
-          props.onOk();
+          onOk();
           break;
         case '清空':
           // setOutput('0');
-          updateOutput('0')
+          updateOutput('0');
           break;
         case '删除':
           if (len === 1) {
             // setOutput('0');
-            updateOutput("0")
+            updateOutput('0');
           } else {
             // setOutput(output.substr(0, len - 1));
             updateOutput(output.substr(0, len - 1));

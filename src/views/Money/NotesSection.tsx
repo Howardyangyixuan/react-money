@@ -10,8 +10,8 @@ const NotesSection: FC<Props> = (props) => {
   const note = props.value;
   return (
     <NotesSectionWrapper>
-      <Input label="备注" defaultValue={note}
-             onBlur={(e) => {props.onChange(e.target.value);}}
+      <Input label="备注" value={note}
+             onChange={(e) => {props.onChange(e.target.value);}}
              type="text"
              placeholder="请在这里添加备注"/>
     </NotesSectionWrapper>
