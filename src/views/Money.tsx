@@ -28,7 +28,7 @@ type MoneyData = {
 
 function Money() {
   const {tags, setTags} = useTags();
-  const {records, addRecords} = useRecords();
+  const {addRecords} = useRecords();
   const initMoneyData = {
     tags,
     selectedTagsMarker: tags.map(() => 0),
@@ -70,9 +70,6 @@ function Money() {
 
   return (
     <MyLayout>
-      {JSON.stringify(moneyData)}
-      <hr/>
-      {JSON.stringify(records)}
       <TagsSection value={{tags: moneyData.tags, selectedTagsMarker: moneyData.selectedTagsMarker}}
                    onChange={(tags, selectedTagsMarker) => onChange({tags, selectedTagsMarker: selectedTagsMarker})}/>
       <NotesSection value={moneyData.note} onChange={note => onChange({note})}/>

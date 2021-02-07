@@ -32,8 +32,14 @@ const RecordsWrapper = styled.div`
   }
 }
 `;
+const Header = styled.h3`
+font-size: 18px ;
+line-height: 20px;
+padding: 10px 16px;
+`
 
 function Statistics() {
+  const format = "YYYY年MM月DD日"
   const {records} = useRecords();
   const [category, setCategory] = useState<Category>('-');
   const onChange = (category: Category) => {
@@ -41,16 +47,13 @@ function Statistics() {
   };
   const selectedRecords = records.filter((record) => record.category === category);
   const recordHash: { [K: string]: RecordItem[] } = {};
-  console.log(selectedRecords);
   selectedRecords.forEach((record) => {
-    const format = 'YYYY-MM-DD'
     let key = day(record.createdAt).format(format);
     if (!(key in recordHash)) {
       recordHash[key] = [];
     }
     recordHash[key].push(record);
   });
-  console.log(recordHash);
   //对象变为数组并排序
   const recordHashArray = Object.entries(recordHash).sort((a, b) => {
     if (a[0] < b[0]) return 1;
@@ -64,7 +67,6 @@ function Statistics() {
         <CategorySection value={category} onChange={category => onChange(category)}/>
       </CategorySectionWrapper>
       {recordHashArray.map(([_date, dateRecords]) => {
-        const format = "YYYY-MM-DD"
         let date= _date
         if(date===day(now).format(format)){
           date = "今天"
@@ -75,12 +77,12 @@ function Statistics() {
         }
         return (
           <RecordsWrapper key={date}>
-            <h3>{date}</h3>
+            <Header>{date}</Header>
             <ul>
               {dateRecords.filter((record) => record.category === category).map((record) => {
                 return <li key={record.createdAt}>
                   <div className="category">
-                    {record.tagsName}
+                    {record.tagsName.join("，")}
                   </div>
                   <div className="note">
                     {record.note === '' ? <div>` `</div> : <div>{record.note}</div>}
@@ -88,7 +90,6 @@ function Statistics() {
                   <div className="output">
                     ¥{record.output}
                   </div>
-                  日期{day(record.createdAt).format('YYYY-MM-DD')}
                 </li>;
               })}
             </ul>

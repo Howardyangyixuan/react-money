@@ -31,7 +31,7 @@ align-items: center;
 `;
 const Tag: FC = () => {
   const {tagId} = useParams();
-  const {tags, findTag, updateTag, deleteTag} = useTags();
+  const {findTag, updateTag, deleteTag} = useTags();
   const tag = findTag(parseInt(tagId));
   return (
     !tag ? <Redirect to="/tags"/> :
@@ -51,8 +51,6 @@ const Tag: FC = () => {
           <Center>
             <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
           </Center>
-          <div>{tag.id}:{tag.name}</div>
-          {tags.map((tag) => <li key={tag.id}>{tag.name}</li>)}
         </TagWrapper>
       </Layout>)
   );
