@@ -5,11 +5,12 @@ type RecordItem = {
   tagsName: string[],
   note: string,
   category: '+' | '-',
-  output: number
+  output: number,
+  createdAt: string
 }
 export const useRecords = () => {
   const initRecordsString = window.localStorage.getItem('records');
-  const initRecords = initRecordsString ? JSON.parse(initRecordsString) : [];
+  let initRecords = initRecordsString ? JSON.parse(initRecordsString) : [];
   const [records, setRecords] = useState<RecordItem[]>(initRecords);
   const addRecords = (record: RecordItem) => {
     const newRecords = [...records, record];

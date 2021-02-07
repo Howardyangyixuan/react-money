@@ -58,7 +58,8 @@ function Money() {
     const {tags, selectedTagsMarker, ...rest} = moneyData;
     const record = {
       tagsName,
-      ...rest
+      ...rest,
+      createdAt: new Date().toISOString()
     };
     addRecords(record);
     setMoneyData(initMoneyData);
