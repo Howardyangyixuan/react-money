@@ -1,13 +1,22 @@
 import styled from 'styled-components';
-import React, {FC} from 'react';
+import React, {FC, useEffect, useRef} from 'react';
 import {Tag} from '../helper';
 import {createId} from '../../lib/createId';
 
 type Props = {
   value: { tags: Tag[], selectedTagsMarker: number[] },
-  onChange: (tags: Tag[], selectedTagsMarker: number[]) => void
+  onChange: (tags: Tag[], selectedTagsMarker: number[]) => void,
+  scrollTop?: number
 }
 const TagsSection: FC<Props> = (props) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    setTimeout(() => {
+      if (wrapperRef.current) {
+        wrapperRef.current.scrollTop = props.scrollTop || 0;
+      }
+    }, 0);
+  }, [props.scrollTop]);
   const tags = props.value.tags;
   const selectedTags = props.value.selectedTagsMarker;
   const addTagPrompt = () => {
@@ -32,7 +41,7 @@ const TagsSection: FC<Props> = (props) => {
   };
 
   return (
-    <TagsSectionWrapper>
+    <TagsSectionWrapper ref={wrapperRef}>
       <ol>
         {tags.map((item, index) => {
           return <li className={getClass(index)} onClick={() => toggleTag(index)}
@@ -53,6 +62,9 @@ flex-shrink: 1;
 //justify-content: flex-end;
 align-items: flex-start;
 overflow: auto;
+> :first-child{
+margin-top: auto !important;
+}
 > ol{
   display: flex;
   flex-wrap: wrap;

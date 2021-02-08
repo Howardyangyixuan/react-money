@@ -1,7 +1,6 @@
 import Nav from './Nav';
 import React, {FC, useEffect, useRef} from 'react';
 import styled from 'styled-components';
-import {useUpdate} from '../hooks/useUpdate';
 
 const Wrapper = styled.div`
 height: 100vh;

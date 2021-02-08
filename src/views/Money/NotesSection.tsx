@@ -19,7 +19,7 @@ const NotesSection: FC<Props> = (props) => {
 };
 const NotesSectionWrapper = styled.section`
 background: #f5f5f5;
-padding: 10px 16px;
+padding: 0 16px;
 font-size: 14px;
 `;
 

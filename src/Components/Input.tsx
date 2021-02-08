@@ -26,7 +26,7 @@ const Input: FC<Props> = (props) => {
   return (
     <Label>
       <span>{label}</span>
-      <input {...inputProps}/>
+      <input className="oneLine" {...inputProps}/>
     </Label>
   );
 };

@@ -1,5 +1,5 @@
 const idString = window.localStorage.getItem('id');
-let id = idString ? parseInt(idString)  : 3;
+let id = idString ? parseInt(idString)  : 12;
 window.localStorage.setItem('id', JSON.stringify(id));
 const createId = () => {
   id += 1;

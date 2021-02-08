@@ -8,6 +8,14 @@ const defaultTags = [
   {id: 1, name: '食'},
   {id: 2, name: '住'},
   {id: 3, name: '行'},
+  {id: 4, name: '看病'},
+  {id: 5, name: '外快'},
+  {id: 6, name: '基金'},
+  {id: 7, name: '股票'},
+  {id: 10, name: '工资'},
+  {id: 8, name: '婚礼随份子'},
+  {id: 9, name: '同事聚餐'},
+  {id: 11, name: '老友饭局'},
 ];
 
 const useTags = () => {

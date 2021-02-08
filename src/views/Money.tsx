@@ -71,7 +71,7 @@ function Money() {
 
   return (
     <MyLayout scrollTop={9999}>
-      <TagsSection value={{tags: moneyData.tags, selectedTagsMarker: moneyData.selectedTagsMarker}}
+      <TagsSection scrollTop={9999} value={{tags: moneyData.tags, selectedTagsMarker: moneyData.selectedTagsMarker}}
                    onChange={(tags, selectedTagsMarker) => onChange({tags, selectedTagsMarker: selectedTagsMarker})}/>
       <NotesSection value={moneyData.note} onChange={note => onChange({note})}/>
       <CategorySectionWrapper>
