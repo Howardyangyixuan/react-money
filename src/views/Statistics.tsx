@@ -81,11 +81,11 @@ function Statistics() {
             <ul>
               {dateRecords.filter((record) => record.category === category).map((record) => {
                 return <li key={record.createdAt}>
-                  <div className="category">
+                  <div className="category oneLine">
                     {record.tagsName.join("，")}
                   </div>
                   <div className="note">
-                    {record.note === '' ? <div>` `</div> : <div>{record.note}</div>}
+                    {record.note === '' ? <div/> : <div>{record.note}</div>}
                   </div>
                   <div className="output">
                     ¥{record.output}

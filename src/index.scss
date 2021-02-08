@@ -58,3 +58,8 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.wrap{
+  white-space: normal;
+  word-break: break-all;
+}

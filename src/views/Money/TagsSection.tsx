@@ -36,7 +36,7 @@ const TagsSection: FC<Props> = (props) => {
       <ol>
         {tags.map((item, index) => {
           return <li className={getClass(index)} onClick={() => toggleTag(index)}
-                     key={index}>{item.name}</li>;
+                     key={index}><span className="wrap">{item.name}</span></li>;
         })}
       </ol>
       <button onClick={addTagPrompt}>新增标签</button>
@@ -51,10 +51,12 @@ display: flex;
 flex-direction: column;
 justify-content: flex-end;
 align-items: flex-start;
+overflow: hidden;
 > ol{
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 -12px;
   > li{
-  display: inline-block;
   background: #D9D9D9;
   border-radius: 18px;
   padding: 3px 18px;
