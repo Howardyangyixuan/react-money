@@ -51,7 +51,7 @@ display: flex;
 flex-direction: column;
 justify-content: flex-end;
 align-items: flex-start;
-overflow: hidden;
+//overflow: hidden;
 > ol{
   display: flex;
   flex-wrap: wrap;

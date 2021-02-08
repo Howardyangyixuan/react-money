@@ -24,7 +24,7 @@ function App() {
     <AppWrapper>
       <Router>
         <Switch>
-          <Redirect from="/" exact to="/tags"/>
+          <Redirect from="/" exact to="/money"/>
           <Route exact path="/tags/:tagId">
             <Tag/>
           </Route>
