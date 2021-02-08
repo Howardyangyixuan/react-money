@@ -12,6 +12,7 @@ import {Category, Tag} from './helper';
 const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
+overflow: hidden;
 `;
 
 const CategorySectionWrapper = styled.div`

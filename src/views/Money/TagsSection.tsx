@@ -49,9 +49,10 @@ padding: 12px 16px;
 flex-grow: 1;
 display: flex;
 flex-direction: column;
-justify-content: flex-end;
+flex-shrink: 1;
+//justify-content: flex-end;
 align-items: flex-start;
-//overflow: hidden;
+overflow: auto;
 > ol{
   display: flex;
   flex-wrap: wrap;
